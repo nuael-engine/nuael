@@ -1,0 +1,36 @@
+NUAEL ENGINE — END USER LICENSE (FREEWARE, PRE-ALPHA)
+
+Copyright (c) 2026 Tvortsa. All rights reserved.
+
+1. GRANT. You may download, install and use the Nuael Engine editor and
+   demo binaries free of charge for evaluation, learning, and
+   non-commercial projects.
+
+2. YOUR GAMES. Games and interactive works YOU create with Nuael Engine
+   are yours. You may distribute them (including the game executables
+   produced by the Build feature) freely, including commercially, as long
+   as they do not contain the Nuael editor itself.
+
+3. RESTRICTIONS. You may NOT:
+   - redistribute, sell, rent or sublicense the Nuael editor binary itself;
+   - reverse engineer or attempt to extract the engine's source code;
+   - remove copyright or attribution notices;
+   - use the editor for commercial game development services or in a
+     commercial product pipeline without a separate agreement
+     (contact: tvortsa@gmail.com).
+
+4. PRICING. All PRE-ALPHA and ALPHA versions of Nuael Engine are
+   distributed free of charge under this license. Starting with the beta
+   stage, the terms of distribution (including possible paid tiers or
+   commercial licensing) may be revised. New terms will apply only to
+   versions released after their publication and will never revoke rights
+   already granted to versions you have downloaded under this license.
+
+5. NO WARRANTY. This is pre-alpha software provided "AS IS", without
+   warranty of any kind. In no event shall the authors be liable for any
+   claim, damages or other liability arising from its use.
+
+6. SOURCE CODE. The source code of Nuael Engine is proprietary and is
+   not distributed under this license.
+
+By downloading or using the binaries you accept these terms.
