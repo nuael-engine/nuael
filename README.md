@@ -23,6 +23,14 @@
 2. Open a demo project, press **Play**.
 3. Press **Build** → get a single exe of the game.
 
+## Troubleshooting
+
+The editor runs quietly by default: the console window is hidden and everything is written to `logs/nuael.log` next to the executable. If something breaks:
+
+1. Launch `NuaelEditor.exe --dev` — this keeps the console visible and turns on debug logging. (Advanced users and bug reports only.)
+2. Reproduce the issue.
+3. Send us the console output and `logs/nuael.log`.
+
 ## Stack
 
 Deno 2 · WebUI · PixiJS v8 · custom ECS · Process Pair architecture · zml (local RL micro-models)
