@@ -2,13 +2,25 @@
 
 **A 2D game engine on the Deno + JavaScript stack — build your game into a single native exe with one button. No toolchains, no Python, no installers.**
 
-> **Status: pre-alpha (v0.1.0-pre-alpha).** Things work, things may change. Feedback welcome.
+> **Status: pre-alpha (v0.2.0-pre-alpha).** The first truly usable release. Things work, things may change. Feedback welcome.
+
+*To make dreams sing in your heart again.*
+
+![Nuael Editor](docs/media/editor.png)
 
 ## Why Nuael
 
 - **One-button builds** — from project to a single cross-platform exe. Download → open → press Build → ship.
 - **Prototypes (stamps)** — design an entity once, stamp it across scenes, propagate changes or reset overrides. Spawn prototypes at runtime from scripts.
 - **Built-in ML (zml)** — train tiny NPC brains (10–100k params) **locally, inside the engine, no Python**. NPC behavior is learned data: retrain with a different reward, get a different character.
+
+## The editor (new in 0.2.0)
+
+- **Context-coded workspace** — scene, prefab and prototype each carry their own color, header and actions. You always know exactly what you're editing.
+- **Assets** — sprites, flipbooks, TexturePacker atlas import (both JSON flavors).
+- **Transform gizmos** in every world — scene, prefab, prototype alike.
+- **Honest undo/redo** — atomic, one operation per step, in editor and runtime alike.
+- **Hotkeys with scopes**, process-pair architecture: the editor and the running game show the same change.
 
 ## The demos (see Releases)
 
