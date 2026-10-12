@@ -2,7 +2,9 @@
 
 **A 2D game engine on the Deno + JavaScript stack — build your game into a single native exe with one button. No toolchains, no Python, no installers.**
 
-> **Status: pre-alpha (v0.2.0-pre-alpha).** The first truly usable release. Things work, things may change. Feedback welcome.
+> **Status: pre-alpha (v0.2.1-pre-alpha).** Things work, things may change. Feedback welcome.
+>
+> **0.2.1 — "it launches."** The window now falls back across browsers (Edge → Chrome → Firefox → any), the window runtime library is **bundled**, so the editor runs **offline with no first-run download**, and if the window can't open it says exactly why instead of going silent. Linux x64 builds are published too.
 
 *To make dreams sing in your heart again.*
 
@@ -39,7 +41,7 @@
 
 The editor runs quietly by default: the console window is hidden and everything is written to `logs/nuael.log` next to the executable. If something breaks:
 
-1. Launch `NuaelEditor.exe --dev` — this keeps the console visible and turns on debug logging. (Advanced users and bug reports only.)
+1. Launch `NuaelEditor.exe --debug` — keeps the console visible, turns on debug logging and opens DevTools. `--help` lists every flag (`--browser edge|chrome|firefox|any`, `--log-level`). (Advanced users and bug reports only.)
 2. Reproduce the issue.
 3. Send us the console output and `logs/nuael.log`.
 
