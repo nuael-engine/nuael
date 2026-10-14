@@ -1,6 +1,6 @@
 # Nuael Engine
 
-**A 2D game engine on the Deno + JavaScript stack — build your game into a single native exe with one button. No toolchains, no Python, no installers.**
+**A game engine on the Deno + JavaScript stack — build your game into a single native exe with one button. No toolchains, no Python, no installers.**
 
 > **Status: pre-alpha (v0.2.1-pre-alpha).** Things work, things may change. Feedback welcome.
 >
@@ -53,7 +53,7 @@ Deno 2 · WebUI · PixiJS v8 · custom ECS · Process Pair architecture · zml (
 
 ## Roadmap
 
-Pre-alpha → stabilization → **2D+3D** (Orillusion 3D layer) → GUI framework spin-off.
+Pre-alpha → stabilization → **3D** (Orillusion 3D layer) → GUI framework spin-off.
 
 ## License & pricing
 
