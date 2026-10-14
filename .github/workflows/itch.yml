@@ -1,0 +1,67 @@
+name: itch-release
+
+# Автопубликация бинарников редактора на itch.io.
+# Триггер: публикация GitHub-релиза на этой витрине (release: published).
+# Артефакты НЕ собираются здесь — берутся из ассетов того же релиза.
+#
+# Каналы itch задаются списком ниже. Канал, для которого ассета ещё нет
+# (например, macOS), ПРОПУСКАЕТСЯ с предупреждением и НЕ валит сборку —
+# так macOS появится одной строкой, когда бинарник будет готов.
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to publish (e.g. v0.2.1)"
+        required: true
+
+concurrency:
+  group: itch-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve tag
+        id: tag
+        run: echo "value=${{ github.event.release.tag_name || inputs.tag }}" >> "$GITHUB_OUTPUT"
+
+      - name: Download release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release download "${{ steps.tag.outputs.value }}" --dir assets --clobber
+
+      - name: Install butler
+        run: |
+          curl -fsSL -o butler.zip https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default
+          unzip -q butler.zip
+          chmod +x butler
+          echo "$PWD" >> "$GITHUB_PATH"
+          ./butler -V
+
+      - name: Push to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+          TAG: ${{ steps.tag.outputs.value }}
+          ITCH_TARGET: nuael/nuael
+        run: |
+          set -euo pipefail
+          VERSION="${TAG#v}"
+
+          # push_channel <channel> <glob>: нет ассета — пропуск (канал в разработке).
+          push_channel() {
+            channel="$1"; pattern="$2"
+            file="$(ls assets/$pattern 2>/dev/null | head -n1 || true)"
+            if [ -z "$file" ]; then
+              echo "::warning::itch: нет ассета '$pattern' — канал '$channel' пропущен (ожидаемо, если бинарник не выпущен)"
+              return 0
+            fi
+            echo "itch: $file → $ITCH_TARGET:$channel (v$VERSION)"
+            butler push "$file" "$ITCH_TARGET:$channel" --userversion "$VERSION"
+          }
+
+          push_channel windows '*win64*.zip'
+          push_channel linux   '*linux64*.tar.gz'
+          push_channel macos   '*macos*'
