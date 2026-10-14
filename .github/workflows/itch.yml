@@ -45,7 +45,7 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
           TAG: ${{ steps.tag.outputs.value }}
-          ITCH_TARGET: nuael/nuael
+          ITCH_TARGET: tvortsa/nuael
         run: |
           set -euo pipefail
           VERSION="${TAG#v}"
