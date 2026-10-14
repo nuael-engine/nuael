@@ -8,6 +8,8 @@
 
 *To make dreams sing in your heart again.*
 
+**Project website: [nuael.com](https://nuael.com)** — downloads and news.
+
 ![Nuael Editor](docs/media/editor.png)
 
 ## Why Nuael
