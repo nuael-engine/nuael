@@ -13,8 +13,8 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Release tag to publish (e.g. v0.2.1)"
-        required: true
+        description: "Release tag (пусто → последний релиз), напр. v0.2.1-pre-alpha"
+        required: false
 
 concurrency:
   group: itch-release
@@ -24,14 +24,23 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      # Тег: из события release → из ручного ввода → последний релиз.
+      # Список релизов, а не /latest: все наши релизы — prerelease, а /latest
+      # отдаёт только стабильные и на них бы дал 404.
       - name: Resolve tag
         id: tag
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           TAG="${{ github.event.release.tag_name || inputs.tag }}"
           if [ -z "$TAG" ]; then
-            echo "::error::не задан tag — для ручного запуска укажи тег (например v0.2.1)"
+            TAG="$(gh release list --repo "${{ github.repository }}" --limit 1 --json tagName --jq '.[0].tagName')"
+          fi
+          if [ -z "$TAG" ]; then
+            echo "::error::не удалось определить тег релиза"
             exit 1
           fi
+          echo "тег: $TAG"
           echo "value=$TAG" >> "$GITHUB_OUTPUT"
 
       # У шага нет checkout, поэтому репозиторий задаём явно (--repo).
