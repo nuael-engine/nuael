@@ -26,12 +26,24 @@ jobs:
     steps:
       - name: Resolve tag
         id: tag
-        run: echo "value=${{ github.event.release.tag_name || inputs.tag }}" >> "$GITHUB_OUTPUT"
+        run: |
+          TAG="${{ github.event.release.tag_name || inputs.tag }}"
+          if [ -z "$TAG" ]; then
+            echo "::error::не задан tag — для ручного запуска укажи тег (например v0.2.1)"
+            exit 1
+          fi
+          echo "value=$TAG" >> "$GITHUB_OUTPUT"
 
+      # У шага нет checkout, поэтому репозиторий задаём явно (--repo).
       - name: Download release assets
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release download "${{ steps.tag.outputs.value }}" --dir assets --clobber
+        run: |
+          gh release download "${{ steps.tag.outputs.value }}" \
+            --repo "${{ github.repository }}" \
+            --dir assets --clobber
+          echo "скачано:"
+          ls -la assets
 
       - name: Install butler
         run: |
