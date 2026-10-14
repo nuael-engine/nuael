@@ -53,7 +53,7 @@ Deno 2 · WebUI · PixiJS v8 · custom ECS · Process Pair architecture · zml (
 
 ## Roadmap
 
-Pre-alpha → stabilization → **3D** (Orillusion 3D layer) → GUI framework spin-off.
+Pre-alpha → stabilization → **2D today, 3D next** (Orillusion 3D layer) → GUI framework spin-off.
 
 ## License & pricing
 
