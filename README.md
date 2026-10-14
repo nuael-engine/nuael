@@ -8,7 +8,7 @@
 
 *To make dreams sing in your heart again.*
 
-**Project website: [nuael.com](https://nuael.com)** — downloads and news.
+**Project website: [nuael.com](https://nuael.com)** · **itch.io: [tvortsa.itch.io/nuael](https://tvortsa.itch.io/nuael)** — downloads and news.
 
 ![Nuael Editor](docs/media/editor.png)
 
